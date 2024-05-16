@@ -3,6 +3,7 @@ import ErrorPage from "@/Pages/ErrorPage";
 import LoginPage from "@/Pages/LoginPage";
 import MainPage from "@/Pages/MainPage";
 import LearnPage from "@/Pages/LearnPage";
+import EditPage from "@/Pages/EditPage";
 
 
 export const router = createBrowserRouter([
@@ -20,7 +21,11 @@ export const router = createBrowserRouter([
         element: <LoginPage />
     },
     {
-        path: '/decks/:id_pack/learn',
+        path: '/pack/learn/:id_pack',
         element: <LearnPage />
+    },
+    {
+        path: '/pack/edit/:id_pack',
+        element: <EditPage />
     }
 ])

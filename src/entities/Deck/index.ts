@@ -1,3 +1,3 @@
-import { Deck } from "./ui/Deck";
+import { PacksCard } from "./ui/PacksCard";
 
-export { Deck };
+export { PacksCard };

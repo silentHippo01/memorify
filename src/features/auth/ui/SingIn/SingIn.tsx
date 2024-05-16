@@ -5,27 +5,35 @@ import { enqueueSnackbar } from "notistack";
 import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Login = () => {
+export const SingIn = () => {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
-    const [login, { isLoading, data: token, error: loginError }] = authApi.useLoginMutation();
-
+    const [singIn, { isLoading, data: token, error: singError }] = authApi.useSignInMutation();
     const navigate = useNavigate();
 
     const onSubmit = useCallback(async (data: any) => {
         try {
-            const tokenData = await login(data).unwrap();
+            const tokenData = await singIn(data).unwrap();
             localStorage.setItem('memorify', tokenData.token);
             navigate('/');
         } catch (e: any) {
             enqueueSnackbar(e, { variant: 'error' })
         }
         console.log(data)
-    }, [login])
+    }, [singIn])
+
+    console.log({ token })
+    console.log(singError)
+
+    useEffect(() => {
+        if (singError) {
+            singError && enqueueSnackbar(singError.data.message, { variant: 'error' })
+        }
+    }, [singError])
 
     return (
         <form
@@ -42,7 +50,15 @@ export const Login = () => {
                 isInvalid={!!errors.email}
                 errorMessage={!!errors.email && "Введите почту"}
             />
-
+            <Input
+                {...register("name", {
+                    required: true,
+                })}
+                type="text"
+                label="Имя"
+                isInvalid={!!errors.nikname}
+                errorMessage={!!errors.nikname && "Введите имя"}
+            />
             <Input
                 {...register("password", {
                     required: true,
@@ -55,9 +71,10 @@ export const Login = () => {
             <Button
                 className=""
                 type="submit"
-            // color="primary"
+                // color="primary"
+                isLoading={isLoading}
             >
-                Войти
+                Зарегистрироваться
             </Button>
         </form>
     );

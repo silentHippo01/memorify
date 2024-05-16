@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, CardHeader, Image } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 
-interface DeckProps {
+interface PacksCardProps {
     id_pack: number;
     title_pack: string;
     description: string;
@@ -9,7 +9,7 @@ interface DeckProps {
     avatar_pack: string;
 }
 
-export const Deck = (props: DeckProps) => {
+export const PacksCard = (props: PacksCardProps) => {
     const {
         id_pack,
         title_pack,
@@ -20,13 +20,12 @@ export const Deck = (props: DeckProps) => {
 
     const navigate = useNavigate();
 
-
     const onLearnClick = () => {
-        navigate(`/decks/${id_pack}/learn`);
+        navigate(`/pack/learn/${id_pack}`);
     }
 
     const onEditClick = () => {
-        navigate(`/decks/${id_pack}/edit`);
+        navigate(`/pack/edit/${id_pack}`);
     }
 
     return (
@@ -66,6 +65,5 @@ export const Deck = (props: DeckProps) => {
             </CardBody>
         </Card>
         // </Link>
-
     );
 };

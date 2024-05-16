@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { NextUIProvider } from '@nextui-org/react'
 import './index.css'
-import { RouterProvider } from 'react-router-dom'
-import { router } from './App/Providers/Router/AppRouter.tsx'
+import { Provider } from 'react-redux'
+import { store } from './App/Providers/StoreProvider/store.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <NextUIProvider>
-            <main className='text-foreground bg-background dark flex flex-col h-screen'>
-                <App />
-            </main>
+            <Provider store={store}>
+                <main className='text-foreground bg-background dark flex flex-col h-screen'>
+                    <App />
+                </main>
+            </Provider>
         </NextUIProvider>
     </React.StrictMode>
 );

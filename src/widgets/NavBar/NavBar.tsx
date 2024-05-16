@@ -18,7 +18,7 @@ const NavBar = () => {
                     <NavbarItem>
                         <Link color='foreground' href="#">Профиль</Link>
                     </NavbarItem>
-                    <Button as={Link} href="#" variant="flat">
+                    <Button as={Link} href="/login" variant="flat">
                         Войти
                     </Button>
                 </NavbarContent>
