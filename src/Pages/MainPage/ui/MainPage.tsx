@@ -5,7 +5,10 @@ const MainPage = () => {
 
     return (
         <div className="flex flex-col h-screen">
+
             <Packs />
+
+
         </div>
     );
 };

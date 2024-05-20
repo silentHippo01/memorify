@@ -1,7 +1,7 @@
 import { PacksCard } from "@/entities/Deck";
 import { packApi, useGetCardsByPackIdQuery } from "../model/packApi";
 import { CircularProgress } from "@nextui-org/react";
-
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 
 
 export const Packs = () => {
@@ -31,7 +31,7 @@ export const Packs = () => {
 
     return (
         <>
-            <div className=""><h1>Ваши колоды</h1></div>
+            <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Ваши колоды</h1>
             <div className="w-full flex flex-wrap gap-3">
                 {
                     packs.map((pack: any) => {
@@ -42,7 +42,7 @@ export const Packs = () => {
                                 title_pack={pack.title_pack}
                                 description={pack.description}
                                 quantity_cards={pack.quantity_cards}
-                                avatar_pack={pack.avatar_pack}
+                            // avatar_pack={pack.avatar_packs}
                             />)
                     })
                 }

@@ -5,10 +5,12 @@ interface IconProps extends React.SVGProps<SVGSVGElement> {
     inverted?: boolean;
 }
 
-export const Icon = () => {
+export const Icon = (props: IconProps) => {
+    const { className, Svg, inverted, ...otherProps } = props;
     return (
-        <div>
-
-        </div>
+        <Svg
+            className={className}
+            {...otherProps}
+        />
     );
 };

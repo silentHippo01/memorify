@@ -8,13 +8,16 @@ interface DeckProps {
     description: string;
     quantity_cards: number;
     avatar_pack: string;
+
 }
 
 interface CardComponentProps {
-    id_card?: number;
+    id_card: number;
     termin?: string;
     termin_definition?: string;
     avatar_card?: string;
+    onKnownClick: (id_card: number) => void;
+    onUnknownClick: (id_card: number) => void;
 }
 
 export const CardComponent = (props: CardComponentProps) => {
@@ -23,16 +26,10 @@ export const CardComponent = (props: CardComponentProps) => {
         id_card,
         termin,
         termin_definition,
-        avatar_card = true //УБРАТЬ
+        avatar_card,
+        onKnownClick,
+        onUnknownClick
     } = props;
-
-    const onKnownClick = () => {
-
-    }
-
-    const onUnknownClick = () => {
-
-    }
 
     const variants = {
         visible: {
@@ -57,39 +54,7 @@ export const CardComponent = (props: CardComponentProps) => {
 
     return (
         <>
-            {/* <div>
-                <Card className="max-w-[800px]">
-                    <CardBody>
-                        <div className="flex items-center justify-center overflow-hidden">
-                            <p className="max-w-[400px] mx-1">
-                                Какой город изображен на картинке?
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nisi asperiores illo libero reprehenderit, officia commodi, ducimus, quaerat est esse facilis animi quisquam voluptatibus optio fugiat quas praesentium ipsam autem!
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nisi asperiores illo libero reprehenderit, officia commodi, ducimus, quaerat est esse facilis animi quisquam voluptatibus optio fugiat quas praesentium ipsam autem!
-                            </p>
-                            {avatar_card && <Image
-                                className="mx-1 my-4"
-                                src={'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg'}
-                                fallbackSrc={''}
-                            // width={400}
-                            />}
-                        </div>
-
-                    </CardBody>
-
-                    <CardFooter className="flex width-full justify-center gap-4">
-                        <Button onClick={onKnownClick} color="success" variant="ghost">Знаю</Button>
-                        <Button onClick={onUnknownClick} color="danger" variant="ghost">Не знаю</Button>
-                    </CardFooter>
-                </Card>
-            </div> */}
-
-            {/* <motion.div
-                className="max-w-[800px] bg-red-500"
-                onClick={handleClick}
-                animate={isFlipped ? "hidden" : "visible"}
-                variants={variants}
-            > */}
-            <Card className="max-w-[800px]">
+            <Card className="max-w-[700px] w-full">
                 {
                     isFlipped === false ?
                         <motion.div
@@ -98,28 +63,29 @@ export const CardComponent = (props: CardComponentProps) => {
                             animate={isFlipped ? "hidden" : "visible"}
                             variants={variants}
                         >
-                            <CardBody>
-                                <div className="flex items-center justify-center overflow-hidden">
-                                    <p className="max-w-[400px] mx-1">
-                                        Какой город изображен на картинке?
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nisi asperiores illo libero reprehenderit, officia commodi, ducimus, quaerat est esse facilis animi quisquam voluptatibus optio fugiat quas praesentium ipsam autem!
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa nisi asperiores illo libero reprehenderit, officia commodi, ducimus, quaerat est esse facilis animi quisquam voluptatibus optio fugiat quas praesentium ipsam autem!
-                                    </p>
-                                    {avatar_card && <Image
-                                        className="mx-1 my-4"
-                                        src={'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg'}
-                                        fallbackSrc={''}
-                                    // width={400}
-                                    />}
-                                </div>
+                            <CardBody className={`h-96 flex flex-row ${true ? 'justify-between' : 'justify-center'} items-center px-9`}>
+                                {/* <div className="flex items-center justify-between overflow-hidden"> */}
+                                <h1 className="max-w-[300px] w-full text-3xl text-center">
+                                    {termin}
+                                </h1>
+                                {true && <Image
+                                    className="object-cover w-full"
+                                    width={300}
+                                    height={300}
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+
+                                    // src={avatar_card}
+                                    src={'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg'}
+                                // width={400}
+                                />}
+                                {/* </div> */}
 
                             </CardBody>
                             <CardFooter className="flex width-full justify-center gap-4">
-                                <Button onClick={onKnownClick} color="success" variant="ghost">Знаю</Button>
-                                <Button onClick={onUnknownClick} color="danger" variant="ghost">Не знаю</Button>
+                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost">Знаю</Button>
+                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost">Не знаю</Button>
                             </CardFooter>
                         </motion.div>
-
                         :
                         <motion.div
                             className="max-w-[800px]"
@@ -131,15 +97,20 @@ export const CardComponent = (props: CardComponentProps) => {
                             <CardBody
                                 className="h-96 flex items-center justify-center"
                             >
-                                <div className="flex items-center justify-center overflow-hidden">
-                                    Нью-йорк!
+                                <div className="flex items-center justify-center overflow-hidden ">
+                                    {termin_definition}
                                 </div>
                             </CardBody>
+                            <CardFooter className="flex width-full justify-center gap-4">
+                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost">Знаю</Button>
+                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost">Не знаю</Button>
+                            </CardFooter>
                         </motion.div>
-
                 }
             </Card>
-            {/* </motion.div> */}
         </>
     );
 };
+
+
+// src={'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg'}
