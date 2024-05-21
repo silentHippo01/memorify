@@ -34,18 +34,16 @@ export const NewCardForm = (props: NewCardFormProps) => {
     }, [card.id_card, deleteCard, enqueueSnackbar, index, remove])
 
     return (
-        <div>
-            <Card>
-                <CardHeader className="flex justify-between">
-                    <span>{index + 1}</span>
-                    <Button onClick={deleteHandler}>Удалить</Button>
-                </CardHeader>
-                <Divider />
-                <CardBody className="flex flex-row justify-between">
-                    <Textarea className="w-[45%]" label="Термин" {...register(`cards.${index}.termin`)} />
-                    <Textarea className="w-[45%]" label="Определение" {...register(`cards.${index}.definition`)} defaultValue={card.termin_definition} />
-                </CardBody>
-            </Card>
-        </div>
+        <Card>
+            <CardHeader className="flex justify-between">
+                <span># {index + 1}</span>
+                <Button onClick={deleteHandler} variant="ghost" color="danger">Удалить</Button>
+            </CardHeader>
+            <Divider />
+            <CardBody className="flex flex-row justify-between">
+                <Textarea className="w-[49%]" label="Термин" {...register(`cards.${index}.termin`)} />
+                <Textarea className="w-[49%]" label="Определение" {...register(`cards.${index}.definition`)} defaultValue={card.termin_definition} />
+            </CardBody>
+        </Card>
     );
 };

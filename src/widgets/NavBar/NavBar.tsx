@@ -1,17 +1,25 @@
-import React from 'react';
 
-import { Button, Link, NavbarBrand, Navbar as NavbarComponent, NavbarContent, NavbarItem } from '@nextui-org/react';
+import { Button, Input, Link, NavbarBrand, Navbar as NavbarComponent, NavbarContent, NavbarItem } from '@nextui-org/react';
 
 const NavBar = () => {
     return (
         <header className='w-full'>
             <NavbarComponent>
                 <NavbarBrand>
-                    <h3>Memorify</h3>
+                    <Link href='/'>
+                        <h1 className="text-transparent bg-clip-text bg-gradient-to-tr from-pink-500 to-yellow-500 text-3xl font-bold underline cursor-pointer italic shadow-lg">Memorify</h1>
+                    </Link>
                 </NavbarBrand>
                 <NavbarContent>
-                    <NavbarItem>
+                    {/* <NavbarItem>
                         <Link color='foreground' href="#">Ваши колоды</Link>
+                    </NavbarItem> */}
+                    <NavbarItem>
+                        <Input
+                            placeholder="Поиск..."
+                            className='w-[300px]'
+                            variant='bordered'
+                        />
                     </NavbarItem>
                 </NavbarContent>
                 <NavbarContent justify='end'>

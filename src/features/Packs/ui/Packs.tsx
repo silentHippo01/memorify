@@ -6,24 +6,27 @@ import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 
 export const Packs = () => {
 
-    const { data: cards, error, isLoading } = useGetCardsByPackIdQuery(1);
     const { data: packs, error: errorPacks, isLoading: isLoadingPacks } = packApi.useGetUserPacksQuery('');
-    console.log('cards', cards)
     console.log('packs', packs)
 
 
-    if (isLoading) {
+    if (isLoadingPacks) {
         return (
-            <div className="w-full flex flex-wrap gap-3"><CircularProgress aria-label="Loading..." /></div>
+            <div className="w-full flex flex-wrap gap-3 h-screen justify-center"><CircularProgress aria-label="Loading..." /></div>
         )
     }
 
     if (packs === undefined) {
         return (
             <>
-                <div className=""><h1>Ваши колоды</h1></div>
-                <div className="w-full flex flex-wrap gap-3">
+                <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Ваши колоды</h1>
+                <div className="w-full flex flex-wrap items-center flex-col gap-3 h-screen justify-center text-2xl mt-4">
                     <h1>У вас еще нет колод...</h1>
+                    <Button
+                        className="w-[60px] text-white shadow-lg text-3xl my-4 text-green-400"
+                        variant="ghost"
+                        color="success"
+                    >+</Button>
                 </div>
             </>
         )
@@ -32,6 +35,13 @@ export const Packs = () => {
     return (
         <>
             <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Ваши колоды</h1>
+            <div className="flex justify-end">
+                <Button
+                    className="w-[60px] text-white shadow-lg text-3xl my-4 text-green-400"
+                    variant="ghost"
+                    color="success"
+                >+</Button>
+            </div>
             <div className="w-full flex flex-wrap gap-3">
                 {
                     packs.map((pack: any) => {

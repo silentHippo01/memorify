@@ -34,11 +34,11 @@ export const PacksCard = (props: PacksCardProps) => {
         // <Link
         //     to={`/decks/${id_pack}`}
         // >
-        <Card className="py-4 max-w-[400px] w-full px-4">
+        <Card className="py-4 max-w-[480px] w-full px-4">
             <CardHeader className="pb-0 pt-2 flex-col items-start">
-                <h3 className=" text-xl font-semibold mb-4">{title_pack}</h3>
-                <p className="text-tiny font-bold mb-2">Описание: {description}</p>
-                <p className="text-tiny font-bold">Количество карт: {quantity_cards}</p>
+                <h3 className=" text-3xl font-semibold mb-4">{title_pack}</h3>
+                <p className="text-sm font-bold mb-2">Описание: {description}</p>
+                <p className="text-sm font-bold">Количество карт: {quantity_cards}</p>
             </CardHeader>
             <CardBody className="overflow-visible py-2">
                 <Image
@@ -49,7 +49,7 @@ export const PacksCard = (props: PacksCardProps) => {
                 <div className="flex gap-3">
                     <Button
                         onClick={onLearnClick}
-                        className=""
+                        className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
                         color="primary"
                         variant="solid"
                     >
@@ -58,7 +58,7 @@ export const PacksCard = (props: PacksCardProps) => {
                     <Button
                         onClick={onEditClick}
                         className=""
-                        color="primary"
+                        color=""
                         variant="bordered"
                     >
                         Редактировать
@@ -68,6 +68,6 @@ export const PacksCard = (props: PacksCardProps) => {
                     /> */}
                 </div>
             </CardBody>
-        </Card>
+        </Card >
     );
 };

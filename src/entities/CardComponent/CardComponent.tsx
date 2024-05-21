@@ -82,8 +82,8 @@ export const CardComponent = (props: CardComponentProps) => {
 
                             </CardBody>
                             <CardFooter className="flex width-full justify-center gap-4">
-                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost">Знаю</Button>
-                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost">Не знаю</Button>
+                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost" className="w-[300px] h-[75px] text-2xl">Знаю</Button>
+                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost" className="w-[300px] h-[75px] text-2xl">Не знаю</Button>
                             </CardFooter>
                         </motion.div>
                         :
@@ -97,13 +97,13 @@ export const CardComponent = (props: CardComponentProps) => {
                             <CardBody
                                 className="h-96 flex items-center justify-center"
                             >
-                                <div className="flex items-center justify-center overflow-hidden ">
+                                <h1 className="max-w-[500px] w-full text-3xl text-center">
                                     {termin_definition}
-                                </div>
+                                </h1>
                             </CardBody>
                             <CardFooter className="flex width-full justify-center gap-4">
-                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost">Знаю</Button>
-                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost">Не знаю</Button>
+                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="solid" className="w-[300px] h-[75px] text-2xl">Знаю</Button>
+                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="solid" className="w-[300px] h-[75px] text-2xl">Не знаю</Button>
                             </CardFooter>
                         </motion.div>
                 }

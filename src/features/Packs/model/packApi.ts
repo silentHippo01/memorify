@@ -8,8 +8,14 @@ export const packApi = rtkApi.injectEndpoints({
             providesTags: ['Packs']
         }),
 
+        getPackById: build.query({
+            query: (id) => `packs/${id}`,
+            providesTags: ['Packs']
+        }),
+
         getCardsByPackId: build.query({
-            query: (packId) => `packs/${packId}`,
+            query: (packId) => `packs/cards/${packId}`,
+            providesTags: ['Packs']
         }),
 
         createPack: build.mutation({

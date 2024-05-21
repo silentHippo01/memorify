@@ -2,7 +2,7 @@ import { LearnMode } from "@/features/LearnMode";
 
 const LearnPage = () => {
     return (
-        <div>
+        <div className="h-screen">
             <LearnMode />
         </div>
     );

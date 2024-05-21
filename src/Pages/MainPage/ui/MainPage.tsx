@@ -4,7 +4,7 @@ import { Packs } from "@/features/Packs";
 const MainPage = () => {
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col">
 
             <Packs />
 

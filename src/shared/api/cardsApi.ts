@@ -3,10 +3,10 @@ import { rtkApi } from "@/shared/api/rtkApi";
 
 export const cardsApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        // getUserPacks: build.query({
-        //     query: () => 'packs',
-        //     providesTags: ['Cards']
-        // }),
+        getUserPacks: build.query({
+            query: () => 'packs',
+            providesTags: ['Cards']
+        }),
 
         getCardsByPackId: build.query({
             query: (packId) => `cards/${packId}`,
