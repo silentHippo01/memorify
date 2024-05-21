@@ -2,7 +2,7 @@ import { EditMode } from "@/features/EditMode";
 
 const EditPage = () => {
     return (
-        <div className="h-full min-h-screen">
+        <div className="h-full">
             <EditMode type="new" />
         </div>
     );

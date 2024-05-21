@@ -42,7 +42,7 @@ export const Packs = () => {
                     color="success"
                 >+</Button>
             </div>
-            <div className="w-full flex flex-wrap gap-3">
+            <div className="w-full flex flex-wrap gap-3 h-full">
                 {
                     packs.map((pack: any) => {
                         return (

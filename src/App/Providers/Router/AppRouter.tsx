@@ -4,17 +4,23 @@ import LoginPage from "@/Pages/LoginPage";
 import MainPage from "@/Pages/MainPage";
 import LearnPage from "@/Pages/LearnPage";
 import EditPage from "@/Pages/EditPage";
+import { RequireAuth } from "./RequireAuth";
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <MainPage />,
+        // element: <MainPage />,
+        element: (<RequireAuth><MainPage /></RequireAuth>),
         errorElement: <ErrorPage />
     },
     {
         path: '/profile',
-        element: <div>Profile</div>
+        element: (
+            <RequireAuth>
+                <div>Profile</div>
+            </RequireAuth>
+        )
     },
     {
         path: '/login',
@@ -22,10 +28,12 @@ export const router = createBrowserRouter([
     },
     {
         path: '/pack/learn/:id_pack',
-        element: <LearnPage />
+        // element: <LearnPage />
+        element: (<RequireAuth><LearnPage /></RequireAuth>)
     },
     {
         path: '/pack/edit/:id_pack',
-        element: <EditPage />
+        // element: <EditPage />
+        element: (<RequireAuth><EditPage /></RequireAuth>)
     }
 ])

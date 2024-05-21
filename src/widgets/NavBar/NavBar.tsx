@@ -1,7 +1,10 @@
 
 import { Button, Input, Link, NavbarBrand, Navbar as NavbarComponent, NavbarContent, NavbarItem } from '@nextui-org/react';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+    const isAuth = useSelector((state: any) => state.auth.isAuth);
+
     return (
         <header className='w-full'>
             <NavbarComponent>
@@ -26,9 +29,16 @@ const NavBar = () => {
                     <NavbarItem>
                         <Link color='foreground' href="#">Профиль</Link>
                     </NavbarItem>
-                    <Button as={Link} href="/login" variant="flat">
-                        Войти
-                    </Button>
+                    {isAuth ?
+                        <Button as={Link} href="/login" variant="flat">
+                            Выйти
+                        </Button>
+                        :
+                        <Button as={Link} href="/login" variant="flat">
+                            Войти
+                        </Button>
+                    }
+
                 </NavbarContent>
             </NavbarComponent>
         </header>
