@@ -1,7 +1,8 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { Icon } from "@/shared/ui/Icon/Icon";
-import { Button, Card, CardBody, CardFooter, CardHeader, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, CardFooter, CardHeader, Image, useDisclosure } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
+import { DeletePackModal } from "./DeletePackModal";
 
 interface PacksCardProps {
     id_pack: number;
@@ -21,6 +22,7 @@ export const PacksCard = (props: PacksCardProps) => {
     } = props;
 
     const navigate = useNavigate();
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const onLearnClick = () => {
         navigate(`/pack/learn/${id_pack}`);
@@ -58,11 +60,26 @@ export const PacksCard = (props: PacksCardProps) => {
                     <Button
                         onClick={onEditClick}
                         className=""
-                        color=""
                         variant="bordered"
                     >
                         Редактировать
                     </Button>
+                    <Button
+                        onClick={onOpen}
+                        className=""
+                        color="danger"
+                        variant="bordered"
+                    >
+                        Удалить
+                    </Button>
+                    <DeletePackModal
+                        isOpen={isOpen}
+                        onOpenChange={onOpenChange}
+                        onOpen={onOpen}
+                        id_pack={id_pack}
+                        title_pack={title_pack}
+                    />
+
                     {/* <Icon
                         svg={TrashIcon}
                     /> */}

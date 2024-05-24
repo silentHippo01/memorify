@@ -37,8 +37,8 @@ export const packApi = rtkApi.injectEndpoints({
         }),
 
         deletePack: build.mutation({
-            query: (pack) => ({
-                url: `packs/delete/${pack.id_pack}`,
+            query: (id: number) => ({
+                url: `packs/delete/${id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Packs'],

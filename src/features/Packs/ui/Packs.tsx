@@ -1,14 +1,14 @@
 import { PacksCard } from "@/entities/Deck";
-import { packApi, useGetCardsByPackIdQuery } from "../model/packApi";
-import { CircularProgress } from "@nextui-org/react";
-import { Card, CardFooter, Image, Button } from "@nextui-org/react";
-
+import { packApi } from "../model/packApi";
+import { CircularProgress, useDisclosure } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
+import { CreatePackModal } from "./CreatePackModal";
 
 export const Packs = () => {
 
     const { data: packs, error: errorPacks, isLoading: isLoadingPacks } = packApi.useGetUserPacksQuery('');
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
     console.log('packs', packs)
-
 
     if (isLoadingPacks) {
         return (
@@ -40,7 +40,13 @@ export const Packs = () => {
                     className="w-[60px] text-white shadow-lg text-3xl my-4 text-green-400"
                     variant="ghost"
                     color="success"
+                    onPress={onOpen}
                 >+</Button>
+                <CreatePackModal
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    onOpen={onOpen}
+                />
             </div>
             <div className="w-full flex flex-wrap gap-3 h-full">
                 {
@@ -56,14 +62,6 @@ export const Packs = () => {
                             />)
                     })
                 }
-                {/* <Deck
-                    id_pack={1}
-                    title_pack="English"
-                    description="lorem ipsum dolor sit amet consectetu"
-                    quantity_cards={10}
-                    avatar_pack="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
-                /> */}
-
             </div>
         </>
     );

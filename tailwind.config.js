@@ -37,8 +37,8 @@ module.exports = {
       dark: {
         layout: {},
         colors: {
-          primary: 'blue',
-          secondary: '#000',
+          primary: '#ffffff',
+          secondary: '#000000',
         },
       },
       extend: {
@@ -49,6 +49,9 @@ module.exports = {
             50: "#e6f1fe",
             100: "#cce3fd",
             200: "#99c7fb",
+          },
+          white: {
+            100: "#FFFFFF",
           }
         },
       }

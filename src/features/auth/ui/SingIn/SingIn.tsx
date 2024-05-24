@@ -69,10 +69,10 @@ export const SingIn = () => {
                 errorMessage={!!errors.password && "Введите пароль"}
             />
             <Button
-                className=""
+                className="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
                 type="submit"
-                // color="primary"
-                isLoading={isLoading}
+                color="primary"
+                variant="solid"
             >
                 Зарегистрироваться
             </Button>

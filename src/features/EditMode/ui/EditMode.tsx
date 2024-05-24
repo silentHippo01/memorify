@@ -26,13 +26,15 @@ export const EditMode = (props: EditModeProps) => {
         }
     });
 
-    const { id_pack = 0 } = useParams();
-    const { data: cards, isLoading, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
-
     const { fields, append, remove } = useFieldArray({
         control,
         name: 'cards'
     })
+
+    const { id_pack = 0 } = useParams();
+    const { data: cards, isLoading, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
+    console.log(id_pack, 'id_pack')
+
 
     useEffect(() => {
         if (cards) {
@@ -50,7 +52,7 @@ export const EditMode = (props: EditModeProps) => {
             <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Редактирование</h1>
 
 
-            <div className="flex gap-1 justify-end">
+            <div className="flex gap-1 justify-end ">
                 <Button className="" color="success" variant="bordered" type="button" onClick={() => append({})}>Добавить</Button>
                 <Button
                     variant="bordered"
@@ -64,6 +66,7 @@ export const EditMode = (props: EditModeProps) => {
                 </Button>
                 <Button type="submit">Отправить</Button>
             </div>
+
             <PackForm
                 disabled={isDisabled}
             />
