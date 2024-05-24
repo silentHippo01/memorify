@@ -25,7 +25,7 @@ export const cardsApi = rtkApi.injectEndpoints({
         updateCard: build.mutation({
             query: (card) => ({
                 url: `cards/update/${card.id_card}`,
-                method: 'PUT',
+                method: 'PATCH',
                 body: card
             }),
             invalidatesTags: ['Cards'],

@@ -6,25 +6,39 @@ import { useParams } from "react-router-dom";
 
 interface IPackFormProps {
     disabled: boolean;
+    pack: any;
 }
 
 export const PackForm = (props: IPackFormProps) => {
 
-    const { disabled } = props;
+    const { disabled, pack } = props;
 
     const { id_pack = 0 } = useParams();
-    const { data: pack, isLoading: isLoadingPack, error: errorPack } = packApi.useGetPackByIdQuery(+id_pack);
+    // const { data: pack, isLoading: isLoadingPack, error: errorPack } = packApi.useGetPackByIdQuery(+id_pack);
 
     const { register, control, handleSubmit, formState: { errors }, reset } = useForm<any>(
-
+        {
+            defaultValues: {
+                title_pack: pack?.title_pack,
+                description: pack?.description,
+            }
+        }
     );
 
-    useEffect(() => {
-        reset({
-            title_pack: pack?.title_pack,
-            description: pack?.description,
-        });
-    }, [pack, reset]);
+    // if (isLoadingPack) {
+    //     return (
+    //         <div>Loading...</div>
+    //     )
+    // }
+
+    // useEffect(() => {
+    //     if (pack) {
+    //         reset({
+    //             title_pack: pack?.title_pack,
+    //             description: pack?.description,
+    //         });
+    //     }
+    // }, [pack, reset]);
 
     const onSubmit = (data: any) => {
         console.log(data);
@@ -37,15 +51,14 @@ export const PackForm = (props: IPackFormProps) => {
                     <Input
                         {...register('title_pack')}
                         label={'Название'}
-                        defaultValue={pack?.title_pack}
-                        disabled={disabled}
+                    // disabled={disabled}
                     />
                     <Textarea
                         {...register('description')}
                         label={'Описание'}
-                        defaultValue={pack?.description}
-                        disabled={disabled}
+                    // disabled={disabled}
                     />
+                    <button type="submit">dfdf</button>
                 </CardBody>
             </Card>
         </form>

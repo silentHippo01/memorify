@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, Input, Textarea } from "@nextui-org/react";
+import { Button, Card, CardBody, CircularProgress, Input, Textarea } from "@nextui-org/react";
 import { NewCardForm } from "./NewCardForm";
 import { useFieldArray, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
@@ -8,15 +8,10 @@ import { packApi } from "@/features/Packs/model/packApi";
 import { PackForm } from "./PackForm";
 
 interface EditModeProps {
-    id?: number;
-    type: 'new' | 'edit';
 }
 
 export const EditMode = (props: EditModeProps) => {
-    const {
-        id,
-        type,
-    } = props;
+    const { } = props;
 
     const [isDisabled, setDisabled] = useState(true);
 
@@ -32,9 +27,9 @@ export const EditMode = (props: EditModeProps) => {
     })
 
     const { id_pack = 0 } = useParams();
-    const { data: cards, isLoading, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
-    console.log(id_pack, 'id_pack')
 
+    const { data: cards, isLoading: isLoadingCards, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
+    const { data: pack, isLoading: isLoadingPack, error: errorPack } = packApi.useGetPackByIdQuery(+id_pack);
 
     useEffect(() => {
         if (cards) {
@@ -46,11 +41,9 @@ export const EditMode = (props: EditModeProps) => {
         console.log(data);
     }
 
-    console.log(isDisabled)
     return (
-        <>
+        <div className="h-full">
             <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Редактирование</h1>
-
 
             <div className="flex gap-1 justify-end ">
                 <Button className="" color="success" variant="bordered" type="button" onClick={() => append({})}>Добавить</Button>
@@ -69,26 +62,22 @@ export const EditMode = (props: EditModeProps) => {
 
             <PackForm
                 disabled={isDisabled}
+                pack={pack}
             />
 
-            <form onSubmit={handleSubmit(onSubmit)} noValidate className="mt-4 flex flex-col gap-4">
-
+            <div className="mt-4 flex flex-col gap-4">
                 {
                     fields.map((item, index) => (
                         <NewCardForm
                             card={item}
                             key={item.id}
-                            register={register}
                             remove={remove}
                             index={index}
-
                         // onRemove={() => remove(index)}
                         />
                     ))
                 }
-
-            </form>
-
-        </>
+            </div>
+        </div>
     );
 };
