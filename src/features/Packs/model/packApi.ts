@@ -15,7 +15,7 @@ export const packApi = rtkApi.injectEndpoints({
 
         getCardsByPackId: build.query({
             query: (packId) => `packs/cards/${packId}`,
-            providesTags: ['Packs']
+            providesTags: ['Packs', 'Cards']
         }),
 
         createPack: build.mutation({
@@ -30,7 +30,7 @@ export const packApi = rtkApi.injectEndpoints({
         updatePack: build.mutation({
             query: (pack) => ({
                 url: `packs/update/${pack.id_pack}`,
-                method: 'PUT',
+                method: 'PATCH',
                 body: pack
             }),
             invalidatesTags: ['Packs'],

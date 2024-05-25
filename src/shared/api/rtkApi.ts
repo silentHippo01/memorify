@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const rtkApi = createApi({
     reducerPath: 'api',
-    tagTypes: ['Packs', 'Cards'],
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:7000',
         prepareHeaders: (headers) => {
@@ -13,6 +12,7 @@ export const rtkApi = createApi({
             return headers;
         },
     }),
+    tagTypes: ['Packs', 'Cards'],
     endpoints: (builder) => ({
         getUsers: builder.query({
             query: () => 'users/allUsers'

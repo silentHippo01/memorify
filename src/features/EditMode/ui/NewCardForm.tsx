@@ -7,16 +7,18 @@ import { useForm } from "react-hook-form";
 
 interface NewCardFormProps {
     index: number;
-    remove: any;
+    // remove: any;
     card: any;
+    item: any;
 }
 
 export const NewCardForm = (props: NewCardFormProps) => {
 
     const {
         index,
-        remove,
+        // remove,
         card,
+        item,
     } = props;
 
     const [deleteCard, { isLoading, data, error }] = cardsApi.useDeleteCardMutation();
@@ -28,6 +30,9 @@ export const NewCardForm = (props: NewCardFormProps) => {
             termin_definition: card.termin_definition
         }
     });
+
+    // console.log('item', item)
+    // console.log('card', card)
 
     const onSubmit = (data: any) => {
         console.log(data);
@@ -44,7 +49,7 @@ export const NewCardForm = (props: NewCardFormProps) => {
         }
     };
 
-    const debouncedSaveCard = useDebounce(saveCardData, 1000);
+    const debouncedSaveCard = useDebounce(saveCardData, 250);
 
     const handleFieldChange = async (event: any) => {
         const { name, value } = event.target;
@@ -54,13 +59,15 @@ export const NewCardForm = (props: NewCardFormProps) => {
     const deleteHandler = useCallback(async () => {
         try {
             const res: any = await deleteCard(card.id_card).unwrap();
-            remove(index)
+            // remove(index)
             enqueueSnackbar('Карточка удалена', { variant: 'success' })
         } catch (e: any) {
             // enqueueSnackbar(e, { variant: 'error' })
             enqueueSnackbar("Ошибка", { variant: 'error' })
         }
-    }, [card.id_card, deleteCard, enqueueSnackbar, index, remove])
+    }, [card.id_card, deleteCard, enqueueSnackbar, index])
+
+    console.log()
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
