@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { packApi } from "@/features/Packs/model/packApi";
 import { PackForm } from "./PackForm";
 import { useDispatch } from "react-redux";
+import { enqueueSnackbar } from "notistack";
 
 interface EditModeProps {
 }
@@ -24,8 +25,8 @@ export const EditMode = (props: EditModeProps) => {
 
     const { id_pack = 0 } = useParams();
 
-    const { data: cards, isLoading: isLoadingCards, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
-    // const { data: cards } = packApi.useGetCardsByPackIdQuery(+id_pack);
+    // const { data: cards, isLoading: isLoadingCards, error } = cardsApi.useGetCardsByPackIdQuery(+id_pack);
+    const { data: cards } = packApi.useGetCardsByPackIdQuery(+id_pack);
     const [createCard] = cardsApi.useCreateCardMutation();
     const { data: pack, isLoading: isLoadingPack, error: errorPack } = packApi.useGetPackByIdQuery(+id_pack);
 
@@ -33,11 +34,14 @@ export const EditMode = (props: EditModeProps) => {
 
     const createCardHandler = () => {
         // append({});
-
-        createCard({
-            id_pack: +id_pack,
-        })
-        dispatch(cardsApi.util.invalidateTags(['Cards']))
+        try {
+            createCard({
+                id_pack: +id_pack,
+            }).unwrap()
+        } catch (e) {
+            enqueueSnackbar("Ошибка при создании карточки", { variant: 'error' })
+        }
+        // dispatch(cardsApi.util.invalidateTags(['Cards']))
     }
 
     return (
@@ -53,12 +57,12 @@ export const EditMode = (props: EditModeProps) => {
                 <Button className="" color="success" variant="bordered" type="button" onClick={createCardHandler}>+</Button>
             </div>
 
-            <div className="mt-4 flex flex-col-reverse gap-4">
+            <div className="mt-4 flex flex-col gap-4">
                 {
-                    cards && cards?.map((item: any, index: any) => (
+                    cards && cards.map((item: any, index: any) => (
                         <NewCardForm
                             card={item}
-                            key={item.id}
+                            key={item.id_card}
                             item={item}
                             index={index}
                         />

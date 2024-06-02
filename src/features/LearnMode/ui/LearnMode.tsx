@@ -3,6 +3,8 @@ import { useGetCardsByPackIdQuery } from "@/features/Packs/model/packApi";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Card, CardBody, Image } from "@nextui-org/react";
+import { useSelector } from "react-redux";
+import { learnApi } from "../model/learnApi";
 
 
 
@@ -10,6 +12,8 @@ export const LearnMode = () => {
 
     const { id_pack = 0 } = useParams();
     const { data: cards, error, isLoading } = useGetCardsByPackIdQuery(id_pack);
+    const id_user = useSelector((state: any) => state.auth.id_user);
+    const [saveResult] = learnApi.useSaveResultMutation();
 
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
     const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -30,22 +34,31 @@ export const LearnMode = () => {
 
         if (currentCardIndex < cards.length) {
             setCurrentCardIndex(currentCardIndex + 1);
-        } else {
-            console.log('Results:', JSON.stringify({
-                id_pack: id_pack,
-                id_user: 1,
-                date: Date.now(),
-                answers: newResults,
-            }));
         }
     };
 
+    const saveResultHandler = () => {
+
+        if (currentCardIndex === cards.length - 1) {
+            const res = {
+                id_pack: id_pack,
+                id_user: id_user,
+                date: Date.now(),
+                answers: results,
+            }
+            console.log(res)
+            saveResult(res)
+        }
+    }
+
     const onKnownClickHandler = (id_card: number) => {
         handleAnswer(true, id_card);
+        saveResultHandler()
     }
 
     const onUnknownClickHandler = (id_card: number) => {
         handleAnswer(false, id_card);
+        saveResultHandler()
     }
 
     const restart = () => {
@@ -81,7 +94,9 @@ export const LearnMode = () => {
 
                             <Button
                                 onClick={restart}
-                                color="primary"
+                                color="success"
+                                variant="bordered"
+                                className=""
                             >
                                 Начать заново
                             </Button>

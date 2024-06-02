@@ -30,8 +30,6 @@ export const DeletePackModal = (props: DeletePackModalProps) => {
             classNames={{
 
             }}
-
-
         >
             <ModalContent
 

@@ -13,22 +13,23 @@ const NavBar = () => {
                         <h1 className="text-transparent bg-clip-text bg-gradient-to-tr from-pink-500 to-yellow-500 text-3xl font-bold underline cursor-pointer italic shadow-lg">Memorify</h1>
                     </Link>
                 </NavbarBrand>
-                <NavbarContent>
-                    {/* <NavbarItem>
-                        <Link color='foreground' href="#">Ваши колоды</Link>
-                    </NavbarItem> */}
+                <NavbarContent className='flex gap-10'>
+                    <NavbarItem>
+                        <Link color='foreground' href="/library">Библиотека</Link>
+                    </NavbarItem>
                     <NavbarItem>
                         <Input
                             placeholder="Поиск..."
                             className='w-[300px]'
                             variant='bordered'
+                            isClearable
                         />
                     </NavbarItem>
                 </NavbarContent>
                 <NavbarContent justify='end'>
-                    <NavbarItem>
+                    {/* <NavbarItem>
                         <Link color='foreground' href="#">Профиль</Link>
-                    </NavbarItem>
+                    </NavbarItem> */}
                     {isAuth ?
                         <Button as={Link} href="/login" variant="flat">
                             Выйти

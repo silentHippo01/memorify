@@ -5,6 +5,7 @@ import MainPage from "@/Pages/MainPage";
 import LearnPage from "@/Pages/LearnPage";
 import EditPage from "@/Pages/EditPage";
 import { RequireAuth } from "./RequireAuth";
+import LibraryPage from "@/Pages/LibraryPage";
 
 
 export const router = createBrowserRouter([
@@ -35,5 +36,13 @@ export const router = createBrowserRouter([
         path: '/pack/edit/:id_pack',
         // element: <EditPage />
         element: (<RequireAuth><EditPage /></RequireAuth>)
-    }
+    },
+    {
+        path: '/library',
+        element: (
+            <RequireAuth>
+                <LibraryPage />
+            </RequireAuth>
+        )
+    },
 ])

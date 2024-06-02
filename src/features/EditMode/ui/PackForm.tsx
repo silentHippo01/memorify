@@ -65,7 +65,7 @@ export const PackForm = (props: IPackFormProps) => {
         console.log(data);
     }
 
-    console.log(pack)
+    // console.log(pack)
 
     if (!pack) {
         return <div>Loading...</div>
@@ -89,7 +89,6 @@ export const PackForm = (props: IPackFormProps) => {
                         onChange={handleFieldChange}
                     // disabled={disabled}
                     />
-                    <button type="submit">dfdf</button>
                 </CardBody>
             </Card>
         </form>

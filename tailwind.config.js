@@ -30,6 +30,9 @@ module.exports = {
       light: {
         layout: {},
         colors: {
+          background: "#F9FBF9",
+          cardColor: "#E2E7E1",
+          foreground: "#11111",
           primary: '#000',
           secondary: '#fff',
         },
@@ -37,8 +40,10 @@ module.exports = {
       dark: {
         layout: {},
         colors: {
+          // primary: '#ffffff',
+          // secondary: '#000000',
           primary: '#ffffff',
-          secondary: '#000000',
+          secondary: '#99c7fb',
         },
       },
       extend: {

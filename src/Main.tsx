@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <NextUIProvider>
             <Provider store={store}>
-                <main className='text-foreground bg-background dark flex flex-col h-full min-h-[100vh]'>
+                <main className='text-foreground bg-background light flex flex-col h-full min-h-[100vh]'>
                     <App />
                 </main>
             </Provider>

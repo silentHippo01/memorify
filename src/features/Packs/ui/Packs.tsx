@@ -58,7 +58,7 @@ export const Packs = () => {
                                 title_pack={pack.title_pack}
                                 description={pack.description}
                                 quantity_cards={pack.quantity_cards}
-                            // avatar_pack={pack.avatar_packs}
+
                             />)
                     })
                 }

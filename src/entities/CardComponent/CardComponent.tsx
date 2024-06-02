@@ -63,22 +63,21 @@ export const CardComponent = (props: CardComponentProps) => {
                             animate={isFlipped ? "hidden" : "visible"}
                             variants={variants}
                         >
-                            <CardBody className={`h-96 flex flex-row ${true ? 'justify-between' : 'justify-center'} items-center px-9`}>
+                            <CardBody className={`h-96 flex flex-row ${true ? 'justify-between' : 'justify-center'} items-center px-9 gap-4`}>
                                 {/* <div className="flex items-center justify-between overflow-hidden"> */}
-                                <h1 className="max-w-[300px] w-full text-3xl text-center">
+                                <h1 className=" w-full text-3xl text-center">
                                     {termin}
                                 </h1>
-                                {true && <Image
+                                {avatar_card && <Image
                                     className="object-cover w-full"
                                     width={300}
                                     height={300}
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
 
                                     // src={avatar_card}
-                                    src={'https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg'}
+                                    src={avatar_card}
                                 // width={400}
                                 />}
-                                {/* </div> */}
 
                             </CardBody>
                             <CardFooter className="flex width-full justify-center gap-4">

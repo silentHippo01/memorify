@@ -3,6 +3,12 @@ import { rtkApi } from "@/shared/api/rtkApi";
 
 export const packApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
+
+        getAllPacks: build.query({
+            query: () => 'packs/all',
+            providesTags: ['Packs']
+        }),
+
         getUserPacks: build.query({
             query: () => 'packs',
             providesTags: ['Packs']
