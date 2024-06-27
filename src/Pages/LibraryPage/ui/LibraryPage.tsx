@@ -21,10 +21,10 @@ const LibraryPage = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Библиотека готовых колод</h1>
+            <h1 className="text-2xl font-semibold leading-tight mb-4 mt-6">Библиотека готовых колод</h1>
             <p>Здесь вы можете найти готовые колоды для изучения, которые создали другие пользователи</p>
 
-            <div className="w-full flex flex-wrap gap-3 h-full mt-4">
+            <div className="w-full flex flex-wrap-reverse gap-3 h-full mt-10 ">
                 {
                     packs &&
                     packs.map((pack: any) => (

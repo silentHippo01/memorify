@@ -72,8 +72,8 @@ export const LearnMode = () => {
     if (currentCardIndex === cards?.length) {
         return (
             <>
-                <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Результаты</h1>
-                <div className="flex flex-col justify-center items-center">
+                <h1 className="text-2xl font-semibold leading-tight mb-4 mt-6">Результаты</h1>
+                <div className="flex flex-col justify-center items-center mt-20">
                     <Card className="max-w-[700px] w-full">
                         <CardBody className="text-center flex justify-center items-center">
                             <h1>Вы изучили все карточки!</h1>
@@ -109,7 +109,7 @@ export const LearnMode = () => {
 
     return (
         <div>
-            <h1 className="text-2xl font-semibold leading-tight mb-4 mt-3">Режим обучения</h1>
+            <h1 className="text-2xl font-semibold leading-tight mb-4 mt-6">Режим обучения</h1>
             <div className="flex flex-col justify-center items-center">
                 <CardComponent
                     id_card={currentCard?.id_card}

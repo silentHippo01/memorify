@@ -25,7 +25,7 @@ export const DeletePackModal = (props: DeletePackModalProps) => {
         <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
-            className="dark"
+            // className="dark"
             backdrop="blur"
             classNames={{
 
@@ -36,11 +36,11 @@ export const DeletePackModal = (props: DeletePackModalProps) => {
             >
                 {(onClose) => (
                     <>
-                        <ModalHeader className="flex flex-col gap-1"><h3 style={{ color: 'white' }}>Удалить колоду {title_pack}?</h3></ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1"><h3 style={{ color: 'black' }}>Удалить колоду {title_pack}?</h3></ModalHeader>
                         <Divider />
                         <ModalBody className="mt-4">
 
-                            <p style={{ color: 'white' }}>Вы действительно хотите удалить эту колоду?</p>
+                            <p style={{ color: 'black' }}>Вы действительно хотите удалить эту колоду?</p>
                         </ModalBody>
                         <ModalFooter>
                             <Button color="danger" variant="light" onPress={onClose}>

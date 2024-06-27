@@ -28,7 +28,7 @@ export const CreatePackModal = (props: CreatePackModalProps) => {
         <Modal
             isOpen={isOpen}
             onOpenChange={onOpenChange}
-            className="dark"
+            // className="dark"
             backdrop="blur"
             classNames={{
 
@@ -41,7 +41,7 @@ export const CreatePackModal = (props: CreatePackModalProps) => {
             >
                 {(onClose) => (
                     <form onSubmit={handleSubmit((data: any) => { onSubmit(data), reset(), onClose() })} noValidate>
-                        <ModalHeader className="flex flex-col gap-1"><h3 style={{ color: 'white' }}>Создать колоду</h3></ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1"><h3 style={{ color: 'black' }}>Создать колоду</h3></ModalHeader>
                         <Divider />
                         <ModalBody className="mt-4">
                             <Input

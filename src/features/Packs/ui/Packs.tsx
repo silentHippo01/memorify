@@ -46,6 +46,7 @@ export const Packs = () => {
                     isOpen={isOpen}
                     onOpenChange={onOpenChange}
                     onOpen={onOpen}
+
                 />
             </div>
             <div className="w-full flex flex-wrap gap-3 h-full">

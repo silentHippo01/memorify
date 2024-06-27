@@ -54,7 +54,7 @@ export const CardComponent = (props: CardComponentProps) => {
 
     return (
         <>
-            <Card className="max-w-[700px] w-full">
+            <Card className="max-w-[700px] w-full mt-10">
                 {
                     isFlipped === false ?
                         <motion.div
@@ -101,8 +101,8 @@ export const CardComponent = (props: CardComponentProps) => {
                                 </h1>
                             </CardBody>
                             <CardFooter className="flex width-full justify-center gap-4">
-                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="solid" className="w-[300px] h-[75px] text-2xl">Знаю</Button>
-                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="solid" className="w-[300px] h-[75px] text-2xl">Не знаю</Button>
+                                <Button onClick={() => onKnownClick(id_card)} color="success" variant="ghost" className="w-[300px] h-[75px] text-2xl">Знаю</Button>
+                                <Button onClick={() => onUnknownClick(id_card)} color="danger" variant="ghost" className="w-[300px] h-[75px] text-2xl">Не знаю</Button>
                             </CardFooter>
                         </motion.div>
                 }
